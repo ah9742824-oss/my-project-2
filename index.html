@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css">
+  <title>تسجيل الدخول</title>
+</head>
+<body class="login-page">
+  <div class="login-box">
+    <h2>🔐 تسجيل الدخول</h2>
+    <input type="password" id="password" placeholder="اكتب كلمة السر" autocomplete="current-password">
+    <button id="loginBtn" type="button">دخول</button>
+    <p class="hint">هذه الحماية بسيطة من جهة المتصفح فقط، وغرضها منع التصفح العرضي وليست حماية أمنية حقيقية.</p>
+  </div>
+
+  <script>
+    // غيّر كلمة السر هنا لو حبيت
+    const SITE_PASSWORD = "12345";
+
+    function checkPassword() {
+      const password = document.getElementById("password").value;
+      if (password === SITE_PASSWORD) {
+        window.location.href = "terms.html";
+      } else {
+        alert("🤣🤣😂😂 انت مش عارف كلمة السر ولا ايه!");
+      }
+    }
+
+    document.getElementById("loginBtn").addEventListener("click", checkPassword);
+    document.getElementById("password").addEventListener("keypress", (e) => {
+      if (e.key === "Enter") checkPassword();
+    });
+  </script>
+</body>
+</html>

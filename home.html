@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css">
+  <title>📚 مكتبتي التعليمية</title>
+</head>
+<body>
+  <nav>
+    <a href="index.html">🎥 الفيديوهات</a>
+    <a href="pdf.html">📑 ملفات PDF</a>
+    <div class="link-btn">
+      <a href="https://ah9742824-oss.github.io/pdf/" target="_blank" rel="noopener noreferrer">🌐</a>
+    </div>
+  </nav>
+
+  <!-- نافذة عرض الدرس (فيديو / ملف) -->
+  <div id="videoModal" class="modal">
+    <div class="modal-content">
+      <button type="button" class="close-btn" id="closeModal" aria-label="إغلاق">❌</button>
+      <iframe id="videoFrame" width="100%" height="400" style="border:0;" allowfullscreen title="عرض الدرس"></iframe>
+    </div>
+  </div>
+
+  <div class="progress-menu">
+    <button id="toggleMenu" type="button">⚙️ إعدادات التقدم</button>
+    <div id="menuContent">
+      <button type="button" onclick="exportProgress()">📤 تصدير التقدم</button>
+      <button type="button" onclick="importProgress()">📥 استيراد التقدم</button>
+    </div>
+  </div>
+
+  <button id="openSidebar" type="button">📚 متابعة</button>
+
+  <div id="sidebar" class="sidebar">
+    <div class="resize-handle"></div>
+    <h2>
+      متابعة الدروس
+      <button type="button" onclick="toggleSidebar()" aria-label="إغلاق الشريط الجانبي">❌</button>
+    </h2>
+    <ul id="subjectsList"></ul>
+  </div>
+
+  <h1>📚 مكتبتي التعليمية</h1>
+
+  <div class="global-progress">
+    <div class="global-progress-bar">0%</div>
+  </div>
+
+  <!-- Math -->
+  <details class="subject math" open>
+    <summary>📘 Math 3</summary>
+    <ul>
+      <li><a href="https://youtu.be/WYbk7-YjYwQ">درس 1 (M)</a></li>
+      <li><a href="https://youtu.be/quBIE8RU1yc">درس 2 (M)</a></li>
+      <li><a href="https://youtu.be/_C6Yg-mxC1w">درس 3 (M)</a></li>
+      <li><a href="https://youtu.be/UKaBdhjQ8GQ">درس 4 (M)</a></li>
+      <li><a href="https://youtu.be/3d8zlP8qJMo">درس 5 (M)</a></li>
+      <li><a href="https://youtu.be/ZekH_yaue88">درس 6 (M)</a></li>
+      <li><a href="https://youtu.be/sHEyM-mvEWY">درس 7 (M)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=7qSQTsfsrlQ&list=PLm877Wx3hfJ1-2B7_tT1NqPIL-IQCKMt2&index=4&pp=iAQB">درس 8 (M)</a></li>
+      <li><a href="https://youtu.be/bqJCYnYcq8M?si=dnDzAmTqfYT6GvbM">درس 9 (M)</a></li>
+      <li><a href="  https://youtu.be/obgXKG-giA0">درس 10 (M)</a></li>
+
+    </ul>
+  </details>
+
+  <!-- Physics -->
+  <details class="subject physics">
+    <summary>⚛️ Physics</summary>
+    <details>
+      <summary>M.Ismail</summary>
+    <ul>
+      <li><a href="https://www.youtube.com/watch?v=ZHfeTMlImto&list=PLD30uL4tqplE-3lvM_eqLmyxF9Hp1S_F2&index=1&pp=iAQB">درس 1 (P.I)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=FYJHzapophM&list=PLD30uL4tqplE-3lvM_eqLmyxF9Hp1S_F2&index=2&pp=iAQB">درس 2 (P.I)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=yMe0osGdiSI&list=PLD30uL4tqplE-3lvM_eqLmyxF9Hp1S_F2&index=3&pp=iAQB">درس 3 (P.I)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=F-mCZPaxrKc&list=PLD30uL4tqplE-3lvM_eqLmyxF9Hp1S_F2&index=4&pp=iAQB">درس 4 (P.I)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=XGFayKdFmbU&list=PLD30uL4tqplE-3lvM_eqLmyxF9Hp1S_F2&index=5&pp=iAQB">درس 5 (P.I)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=MowPj7PBz7o&list=PLD30uL4tqplE-3lvM_eqLmyxF9Hp1S_F2&index=6&pp=iAQB">درس 6 (P.I)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=tHV4eYZAcPM&list=PLD30uL4tqplE-3lvM_eqLmyxF9Hp1S_F2&index=7&pp=iAQB">درس 7 (P.I)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=fPSV2fe_VzE&list=PLD30uL4tqplE-3lvM_eqLmyxF9Hp1S_F2&index=8&pp=iAQB">درس 8 (P.I)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=F80PmyTwvUE&list=PLD30uL4tqplE-3lvM_eqLmyxF9Hp1S_F2&index=9&t=2206s&pp=iAQB">درس 9 (P.I)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=aa0xqdqf9vY&list=PLD30uL4tqplE-3lvM_eqLmyxF9Hp1S_F2&index=10&t=12s&pp=iAQB">درس 10 (P.I)</a></li>
+      
+    </ul>
+
+    </details>
+    <details>
+       <summary>M.Saied</summary>
+            <ul>
+      <li><a href="https://youtu.be/BFHNUDU8PzI">درس 1 (P.S)</a></li>
+      <li><a href="https://youtu.be/9VpVy02VRP4">درس 2 (P.S)</a></li>
+      <li><a href="https://youtu.be/tr8JeM4BGmk">درس 3 (P.S)</a></li>
+      <li><a href="https://youtu.be/C71YYM9wp80">درس 4 (P.S)</a></li>
+      <li><a href="https://youtu.be/OYQdBef4hXY">درس 5 (P.S)</a></li>
+      <li><a href="https://youtu.be/7aV5Fuqgsks">درس 6 (P.S)</a></li>
+      <li><a href="https://youtu.be/3-wcejnOkCI">درس 7 (P.S)</a></li>
+      <li><a href="https://youtu.be/cNoA-lOQxjE">درس 8 (P.S)</a></li>
+    </ul>
+    </details>
+  </details>
+  
+ 
+  <details class="subject circuits">
+    <summary>🔌 Circuits</summary>
+    <details>
+      <summary> Abo elfotouh </summary>
+    <ul> 
+    
+      <li><a href="https://www.youtube.com/watch?v=WZoA4XOU4sI&list=PLyO98vlXWz8tAbynbZEGcdeys8Uk5eroq&index=1&pp=iAQB">درس 1 (C.A)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=8sYwXvD6X4w&list=PLyO98vlXWz8tAbynbZEGcdeys8Uk5eroq&index=2&pp=iAQB">درس 2 (C.A)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=ypK8IZYqj90&list=PLyO98vlXWz8tAbynbZEGcdeys8Uk5eroq&index=3&pp=iAQB">درس 3 (C.A)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=njxNFqgKvPA&list=PLyO98vlXWz8tAbynbZEGcdeys8Uk5eroq&index=4&pp=iAQB0gcJCcoJAYcqIYzv">درس 4 (C.A)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=rgswkXR_wuo&list=PLyO98vlXWz8tAbynbZEGcdeys8Uk5eroq&index=5&t=318s&pp=iAQB">درس 5 (C.A)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=wop4X7xB4C0&list=PLyO98vlXWz8tAbynbZEGcdeys8Uk5eroq&index=6&pp=iAQB">درس 6 (C.A)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=XkIxoC5o5_4&list=PLyO98vlXWz8tAbynbZEGcdeys8Uk5eroq&index=7&pp=iAQB">درس 7 (C.A)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=FzjEB8oM2_w&list=PLyO98vlXWz8tAbynbZEGcdeys8Uk5eroq&index=8&pp=iAQB">درس 8 (C.A)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=UUuftAn7ec8&list=PLyO98vlXWz8tAbynbZEGcdeys8Uk5eroq&index=9&pp=iAQB">درس 9 (C.A)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=KXFACUtDAw8&list=PLyO98vlXWz8tAbynbZEGcdeys8Uk5eroq&index=10&pp=iAQB">درس 10 (C.A)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=UV2fJMU8HJs&list=PLyO98vlXWz8tAbynbZEGcdeys8Uk5eroq&index=11&pp=iAQB">درس 11 (C.A)</a></li>
+      
+    </ul>
+
+    </details>
+    <details>
+       <summary>M.maher</summary>
+            <ul>      
+            
+            <li><a href="https://youtu.be/tFKCcXB4WtY?list=PLm877Wx3hfJ37R7tf8KaLhYXBrKtCLjzy">درس 1 (C.M)</a></li>
+            <li><a href="https://www.youtube.com/watch?v=Aqv5T0-lBOE&list=PLm877Wx3hfJ37R7tf8KaLhYXBrKtCLjzy&index=9&pp=iAQB">درس 2 (C.M)</a></li>
+            <li><a href="https://www.youtube.com/watch?v=7hQAdzZWBNg&list=PLm877Wx3hfJ37R7tf8KaLhYXBrKtCLjzy&index=10&pp=iAQB">درس 3 (C.M)</a></li>
+            <li><a href="https://www.youtube.com/watch?v=sybFRGR7R4k&list=PLm877Wx3hfJ37R7tf8KaLhYXBrKtCLjzy&index=11&pp=iAQB">درس 4 (C.M)</a></li>  
+             <li><a href=" https://youtu.be/vBTZ__BX38I?si=-foALcM8U-xL-NPJ">درس 5 (C.M)</a></li>
+
+    </ul>
+    </details>
+  </details>
+  
+ <!-- Machines -->
+<!--<details class="subject modern-physics">
+   <summary>🌌 Machines</summary>
+  <!--  <ul>
+      <li><a href="https://www.youtube.com/watch?v=0Bh_1X4kX_g&list=PLyO98vlXWz8sZGdwhMELV1Vwhq5wKbm0i&index=1&pp=iAQB">درس 1</a></li>
+      <li><a href="https://www.youtube.com/watch?v=-sQ7XeQJmAY&list=PLyO98vlXWz8sZGdwhMELV1Vwhq5wKbm0i&index=2&pp=iAQB">درس 2</a></li>
+      <li><a href="https://www.youtube.com/watch?v=WbBzKjtBlSI&list=PLyO98vlXWz8sZGdwhMELV1Vwhq5wKbm0i&index=3&pp=iAQB">درس 3</a></li>
+      <li><a href="https://www.youtube.com/watch?v=UdgTto4nprE&list=PLyO98vlXWz8sZGdwhMELV1Vwhq5wKbm0i&index=4&pp=iAQB">درس 4</a></li>
+      <li><a href="https://www.youtube.com/watch?v=dThX1m1VdDg&list=PLyO98vlXWz8sZGdwhMELV1Vwhq5wKbm0i&index=5&pp=iAQB">درس 5</a></li>
+    
+      </ul >-->
+ <!-- </details> -->
+
+
+  <!-- احصاء -->
+  <details class="subject stats">
+    <summary>📊 احصاء</summary>
+    <ul>
+      <li><a href="https://www.youtube.com/watch?v=HvZRcS7u2yM&list=PLyO98vlXWz8uncmoSMdOOypcnSA1kr-0V&index=1&pp=iAQB0gcJCcoJAYcqIYzv">درس 1 (اح)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=Ru-UJ4BKrqw&list=PLyO98vlXWz8uncmoSMdOOypcnSA1kr-0V&index=2&t=319s&pp=iAQB">درس 2 (اح)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=0utUydpaAuA&list=PLyO98vlXWz8uncmoSMdOOypcnSA1kr-0V&index=3&t=4710s&pp=iAQB">درس 3 (اح)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=kj5FIinFL3I&list=PLyO98vlXWz8uncmoSMdOOypcnSA1kr-0V&index=4&pp=iAQB">درس 4 (اح)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=HJKP0VJ1gDk&list=PLyO98vlXWz8uncmoSMdOOypcnSA1kr-0V&index=5&pp=iAQB">درس 5 (اح)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=Ev9xT3LuWmI&list=PLyO98vlXWz8uncmoSMdOOypcnSA1kr-0V&index=6&pp=iAQB">درس 6 (اح)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=X6QM1uWyEnk&list=PLyO98vlXWz8uncmoSMdOOypcnSA1kr-0V&index=7&pp=iAQB">درس 7 (اح)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=p3V6KoTrKEI&list=PLyO98vlXWz8uncmoSMdOOypcnSA1kr-0V&index=8&pp=iAQB">درس 8 (اح)</a></li>
+
+    </ul>
+  </details>
+
+  <!-- انسانيات -->
+  <details class="subject linguistics">
+    <summary>📝 انسانيات</summary>
+    <ul>
+      <li><a href="https://youtu.be/30q0XB3gVko">درس 1 (ان)</a></li>
+      <li><a href="https://youtu.be/dphQ7M00y34">درس 2 (ان)</a></li>
+      <li><a href="https://youtu.be/IKBlNryJMT8">درس 3(ان)</a></li>
+      <li><a href="https://youtu.be/nFkahm3JNOA">درس 4 (ان)</a></li>
+      <li><a href="https://youtu.be/WKmTb124C5k">درس 5 (ان)</a></li>
+      <li><a href="https://youtu.be/mSemK77WaNw">درس 6 (ان)</a></li>
+      <li><a href="https://youtu.be/4HCk0Nhhum8">درس 7 (ان)</a></li>
+     
+    </ul>
+  </details>
+ <details class="subject dynamics">
+    <summary>⚙️Feild</summary>
+    <details>
+      <summary> Bahaa & Tamer </summary>
+    <ul> 
+      <li><a href="https://youtu.be/oNc_GEzV7hc">درس 1 (f.b)</a></li>
+      <li><a href="https://youtu.be/Dyl-s_7Zrbc">درس 2 (f.b)</a></li>
+      <li><a href="https://youtu.be/UtO9s_Pqn90">درس 3 (f.b)</a></li>
+      <li><a href="https://youtu.be/Hf8nEKq9u8o">درس 4 (f.b)</a></li>
+      <li><a href="https://youtu.be/nDBocsTXzag">درس 5 (f.b)</a></li>
+      <li><a href="https://youtu.be/0Qn8GEJRVlM">درس 6 (f.b)</a></li> 
+      <li><a href="https://youtu.be/4NuAEOBfr5w">درس 7 (f.b)</a></li>
+      <li><a href="https://youtu.be/A4x2irXs3TI">درس 8 (f.b)</a></li>
+      <li><a href="https://youtu.be/lui2UDeAVUw">درس 9 (f.b)</a></li>
+      <li><a href="https://youtu.be/s68MYVd1KfM">درس 10 (f.b)</a></li>
+      <li><a href="https://youtu.be/KlW3TdvEFlg">درس 11 (f.b)</a></li>
+    </ul>
+
+    </details>
+    <details>
+       <summary>M.maher</summary>
+            <ul>
+      <li><a href="https://www.youtube.com/watch?v=GCvnl01BbP4&list=PLm877Wx3hfJ26h1I9bJdNnH3nPqrvDb-N&index=2&pp=iAQB">درس 1 (f.m) </a></li>
+      <li><a href="https://www.youtube.com/watch?v=KIZP9Z_0t0Q&list=PLm877Wx3hfJ26h1I9bJdNnH3nPqrvDb-N&index=3&t=2s&pp=iAQB">درس 2 (f.m)</a></li>
+      <li><a href="https://youtu.be/dq2HFBlmd0c?si=nWltG2b_kKc7F-ZI">درس 3 (f.m)</a></li>
+      <li><a href="https://youtu.be/zYmFkDp8ns8?si=kaNafImGDcYhb9_Q">درس 4 (f.m)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=wRMP3sJF0rE&list=PLm877Wx3hfJ26h1I9bJdNnH3nPqrvDb-N&index=6&t=225s&pp=iAQB">درس 5 (f.m)</a></li>
+      <li><a href="https://youtu.be/kX5Xzc3H9j4?si=WcVEihwpMO15Pjxx">درس 6 (f.m)</a></li>
+      <li><a href="https://www.youtube.com/watch?v=KJMgQ5dEgEc&list=PLm877Wx3hfJ26h1I9bJdNnH3nPqrvDb-N&index=8&pp=iAQB">درس 7 (f.m)</a></li>
+      <li><a href="https://youtu.be/aVMtQFdLpOc?si=hSaFU21CZNuigqgk">درس 8 (f.m)</a></li>
+    </ul>
+    </details>
+  </details>
+  
+  
+  
+  <!-- تقارير -->
+  <details class="subject electronics">
+    <summary>💡 تقارير </summary>
+    <ul>
+      <li><a href="https://youtu.be/iQ6x3QgLmQE">درس 1 (ت)</a></li>
+      <li><a href="https://youtu.be/FbFKzrseK1s">درس 2 (ت)</a></li>
+      <li><a href="https://youtu.be/_OfmP3WUVOI">درس 3 (ت)</a></li>
+      <li><a href="https://youtu.be/vnvuZH5Am88">درس 4 (ت)</a></li>
+      <li><a href="https://youtu.be/TMqZLs-I6eU">درس 5 (ت)</a></li>
+      <li><a href="https://youtu.be/ncDQL00T1KQ">درس 6 (ت)</a></li> 
+      <li><a href="https://youtu.be/-P9HLnh6mjs">درس 7 (ت)</a></li>
+      <li><a href="https://youtu.be/M_1J5YEgwrM">درس 8 (ت)</a></li> 
+      </ul>
+  </details>
+
+  <!-- قياسات -->
+<!--  <details class="subject technology">
+    <summary>💻 قياسات</summary>
+    <ul>
+      <li><a href="https://www.youtube.com/watch?v=vDUc4TDfItM&list=PLyO98vlXWz8uzsd3LuAEXfYwJGGldJYpb&index=1&pp=iAQB">درس 1</a></li>
+      <li><a href="https://www.youtube.com/watch?v=Z9rTMy942XM&list=PLyO98vlXWz8uzsd3LuAEXfYwJGGldJYpb&index=2&pp=iAQB">درس 2</a></li>
+      <li><a href="https://www.youtube.com/watch?v=HSDZM8X5oaE&list=PLyO98vlXWz8uzsd3LuAEXfYwJGGldJYpb&index=3&pp=iAQB">درس 3</a></li>
+      <li><a href="https://www.youtube.com/watch?v=kTxlqga6ZVE&list=PLyO98vlXWz8uzsd3LuAEXfYwJGGldJYpb&index=4&pp=iAQB">درس 4</a></li>
+      <li><a href="https://www.youtube.com/watch?v=IWDB-NzNq0s&list=PLyO98vlXWz8uzsd3LuAEXfYwJGGldJYpb&index=5&pp=iAQB">درس 5</a></li>
+      <li><a href="https://www.youtube.com/watch?v=pSBfDEMQ868&list=PLyO98vlXWz8uzsd3LuAEXfYwJGGldJYpb&index=6&pp=iAQB">درس 6</a></li> 
+      <li><a href="https://www.youtube.com/watch?v=gK6cdAPg7P4&list=PLyO98vlXWz8uzsd3LuAEXfYwJGGldJYpb&index=7&pp=iAQB">درس 7</a></li>
+      <li><a href="https://www.youtube.com/watch?v=DmqpVaFhRWQ&list=PLyO98vlXWz8uzsd3LuAEXfYwJGGldJYpb&index=8&pp=iAQB">درس 8</a></li> 
+      </ul>
+  </details> -->
+
+  <div class="todo-container">
+    <div id="todoApp">
+      <h2>📋 لائحة مهامي</h2>
+      <div class="todo-input-row">
+        <input type="text" id="taskInput" placeholder="اكتب المهمة هنا...">
+        <button id="addTask" type="button">➕ إضافة</button>
+      </div>
+      <ul id="taskList"></ul>
+    </div>
+  </div>
+
+  <div id="logWrapper">
+    <button id="toggleLog" type="button">📒 السجل الكامل ▾</button>
+    <div id="logContent" class="hidden">
+      <div class="log-actions">
+        <button id="clearLogBtn" type="button" class="log-btn">🗑️ مسح الكل</button>
+        <button id="exportLogBtn" type="button" class="log-btn">📤 تصدير</button>
+        <button id="importLogBtn" type="button" class="log-btn">📥 استيراد</button>
+        <input type="file" id="importFile" accept=".json" style="display:none;">
+      </div>
+      <div id="logContainer"></div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin:20px 0;">
+    <a href="https://ah9742824-oss.github.io/my-tasks/" target="_blank" rel="noopener noreferrer" class="btn">🔗 مهامي</a>
+  </div>
+
+  <footer>
+    Designed &amp; Developed by: Ahmed Hany Sayed Ahmed Abdel Wahab &copy; 2025
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
